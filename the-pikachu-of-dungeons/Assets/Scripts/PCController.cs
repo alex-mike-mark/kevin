@@ -7,6 +7,7 @@ public class PCController : MonoBehaviour
     public float accel;
     public float maxSpeed;
     public Transform firePoint;
+    public float offset;
     public GameObject bullet;
 
     private Rigidbody2D rb;
@@ -36,7 +37,8 @@ public class PCController : MonoBehaviour
         rb.velocity = new Vector2(nh,nv);
 
         if ( f ){
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            // multiplying rotation by any forward gives me 0,0,1. H U R M
+            Instantiate(bullet, firePoint.position + (firePoint.rotation*(new Vector3(offset,0,0))), firePoint.rotation);
         }
         
     }
