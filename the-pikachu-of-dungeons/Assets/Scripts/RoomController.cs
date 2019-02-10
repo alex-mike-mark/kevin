@@ -15,4 +15,9 @@ public class RoomController : MonoBehaviour
     {
         
     }
+
+    // Changes the room to another one. Nice.
+    public void ChangeRoom(){
+
+    }
 }
