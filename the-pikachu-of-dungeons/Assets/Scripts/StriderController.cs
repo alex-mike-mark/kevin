@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StriderController : MonoBehaviour {
-    private Rigidbody2D rb;
-    public PCController player;
 
-    // Use this for initialization
-    public void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        player = FindObjectOfType<PCController>();
+    
+    private void OnTriggerEnter2D(Collider2D other) {
+        if ( other.gameObject.tag == "Bullet"){
+            Die();
+        }
     }
 
-    // Update is called once per frame
-    public void Update()
-    {
-        
+    private void Die(){
+        Destroy(gameObject);
     }
-
 }
