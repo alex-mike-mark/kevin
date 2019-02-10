@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class PCController : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float accel;
     public float maxSpeed;
 
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    // Seems like controls are gonna be something like
-    // wasd or whatever to move
-    // and then some fire key to shoot. So like 5 inputs?
-    // get two axes, get one button.
     void Update()
     {
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
         bool f = Input.GetButtonDown("Fire1");
 
-        float nv = v != 0 ? boundValue(accel*v,maxSpeed,-maxSpeed) : 0;
-        float nh = h != 0 ? boundValue(accel*h,maxSpeed,-maxSpeed) : 0;
+        // calc parts of new velocity vector.
+        float nh = h != 0 ? boundValue(rb.velocity.x + accel*h,maxSpeed,-maxSpeed) : 0;
+        float nv = v != 0 ? boundValue(rb.velocity.y + accel*v,maxSpeed,-maxSpeed) : 0;
+
+        // determine sprite facing
+        if ( nh != 0 ){
+            sr.flipX = nh > 0 ? true : false;
+        }
 
         rb.velocity = new Vector2(nh,nv);
         
@@ -36,8 +39,10 @@ public class PCController : MonoBehaviour
         
     }
 
+    // if value is bigger than top, set to top.
+    // if value is smaller than bottom, set to bottom.
+    // else don't change value
     private float boundValue(float value, float top, float bottom){
-        Debug.Log("Top: "+top+" Value: "+value+" Bottom: "+bottom);
         return Mathf.Max(Mathf.Min(value,top),bottom);
     }
 }
