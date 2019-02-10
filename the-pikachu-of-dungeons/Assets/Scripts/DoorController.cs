@@ -5,7 +5,11 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
     // On collision, send the RoomController something about changing the room.
-    void OnCollision2D(Collider2D coll){
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if ( other.gameObject.tag == "Player" ){
+            Debug.Log("Player hit111!");
+        }
     }
 }
+ 

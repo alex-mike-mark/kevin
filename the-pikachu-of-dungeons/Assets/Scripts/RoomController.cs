@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // public whatever narration we're throwing in there
+    // public whatever ending narration
+
     void Start()
     {
-        
+        // play opening narration
     }
 
     // Update is called once per frame
@@ -18,6 +20,7 @@ public class RoomController : MonoBehaviour
 
     // Changes the room to another one. Nice.
     public void ChangeRoom(){
-
+        // freeze scene
+        // play ending narrations
     }
 }
