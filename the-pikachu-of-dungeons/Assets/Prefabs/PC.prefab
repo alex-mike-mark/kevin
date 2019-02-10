@@ -319,4 +319,5 @@ MonoBehaviour:
   accel: 5
   maxSpeed: 20
   firePoint: {fileID: 3653736571774511936}
+  offset: 8
   bullet: {fileID: 5626420921007187971, guid: 86d2ddb3c7550a644b54ed5a21f616cd, type: 3}
