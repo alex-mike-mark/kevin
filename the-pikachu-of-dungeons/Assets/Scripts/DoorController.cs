@@ -8,6 +8,12 @@ public class DoorController : MonoBehaviour
     public string nextScene;
     public RoomController rc;
 
+    private void Start() { 
+        if( nextScene == "" ){ // because I don't want to deal w/ deleting extra doors in RoomBasics. :D
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if ( other.gameObject.tag == "Player" ){
             rc.ChangeRoom(nextScene);
