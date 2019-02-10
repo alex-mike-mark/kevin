@@ -6,6 +6,8 @@ public class PCController : MonoBehaviour
 {
     public float accel;
     public float maxSpeed;
+    public Transform firePoint;
+    public GameObject bullet;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -32,6 +34,10 @@ public class PCController : MonoBehaviour
         }
 
         rb.velocity = new Vector2(nh,nv);
+
+        if ( f ){
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
+        }
         
     }
 
