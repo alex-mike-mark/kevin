@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomController : MonoBehaviour
 {
     // public whatever narration we're throwing in there
-    // public whatever ending narration
+    // public whatever ending narratio
 
     void Start()
     {
@@ -19,8 +20,9 @@ public class RoomController : MonoBehaviour
     }
 
     // Changes the room to another one. Nice.
-    public void ChangeRoom(){
+    public void ChangeRoom(string scene){
         // freeze scene
         // play ending narrations
+        SceneManager.LoadSceneAsync(scene);
     }
 }
