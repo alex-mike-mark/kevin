@@ -266,5 +266,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -3.09
       objectReference: {fileID: 0}
+    - target: {fileID: 2892987665586354784, guid: e6d079c57ac40cd4796d94e83adc9404,
+        type: 3}
+      propertyPath: nextScene
+      value: Room01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6d079c57ac40cd4796d94e83adc9404, type: 3}
