@@ -6,11 +6,13 @@ public class StriderController : MonoBehaviour {
     private AudioSource narrateDeath;
     private Renderer rend;
     private AudioSource nc;
+    private Collider2D coll2d;
     
     public void Start()
     {
         nc = GameObject.Find("NarrationController").GetComponent<AudioSource>();
         narrateDeath = GetComponent<AudioSource>();
+        coll2d = GetComponent<Collider2D>();
         rend = GetComponent<Renderer>();
     }
 
@@ -23,6 +25,7 @@ public class StriderController : MonoBehaviour {
     //Needs to wait and play sound before destroying
     IEnumerator Die()
     {
+        coll2d.enabled = false;
         if(!nc.isPlaying){
             narrateDeath.Play();
         }
