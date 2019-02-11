@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PCController : MonoBehaviour
 {
@@ -43,8 +44,10 @@ public class PCController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        
+    private void OnTriggerEnter2D(Collider2D other) {
+        if ( other.gameObject.tag == "Strider"){
+            SceneManager.LoadSceneAsync("Game Over");  
+        }
     }
 
     // if value is bigger than top, set to top.
