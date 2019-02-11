@@ -5,9 +5,11 @@ using UnityEngine;
 public class StriderController : MonoBehaviour {
     private AudioSource narrateDeath;
     private Renderer rend;
+    private AudioSource nc;
     
     public void Start()
     {
+        nc = GameObject.Find("NarrationController").GetComponent<AudioSource>();
         narrateDeath = GetComponent<AudioSource>();
         rend = GetComponent<Renderer>();
     }
@@ -21,7 +23,10 @@ public class StriderController : MonoBehaviour {
     //Needs to wait and play sound before destroying
     IEnumerator Die()
     {
-        narrateDeath.Play();
+        if(!nc.isPlaying){
+            narrateDeath.Play();
+        }
+        
         rend.enabled = false;
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
